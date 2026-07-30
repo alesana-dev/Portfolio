@@ -31,9 +31,9 @@ I am a passionate and detail-oriented aspiring software developer currently buil
 
 ### 📫 Connect with Me
 
-- 📧 **Email:** [your-email@example.com](mailto:hechanovaanjo@gmail.com)
-- 💼 **LinkedIn:** [linkedin.com/in/YOUR_LINKEDIN_USERNAME](https://www.linkedin.com/in/anjo-hechanova/)
-- 🌐 **Portfolio:** [YOUR_USERNAME.github.io](https://github.com/alesana-dev)
+- 📧 **Email:** [hechanovaanjo@gmail.com](mailto:hechanovaanjo@gmail.com)
+- 💼 **LinkedIn:** [Anjo Olorosisimo](https://www.linkedin.com/in/anjo-hechanova/)
+- 🌐 **Portfolio:** [alesana-dev](https://github.com/alesana-dev)
 
 ---
 
