@@ -27,10 +27,14 @@
 <body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-sky-500 selection:text-white">
 
     <!--Navbar-->
-    <nav class="fixed top-0 w-full bg-slate-900/90 backdrop-blur-md z-50 border-b border-slate-800">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-xl font-bold tracking-wider text-sky-400">ANJO<span class="text-slate-100">.DEV</span></a>
-            <div class="space-x-6 text-sm font-medium hidden md:block">
+    <nav class="fixed top-0 w-full bg-slate-900/90 backdrop-blur-md z-50 border-b border-slate-800" aria-label="Main navigation">
+        <div class="relative max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#about" class="text-xl font-bold tracking-wider text-sky-400">ANJO<span class="text-slate-100">.DEV</span></a>
+            <button id="nav-toggle" type="button" class="md:hidden p-2 -mr-2 text-slate-200 hover:text-sky-400" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation menu">
+                <i class="fa-solid fa-bars text-lg" aria-hidden="true"></i>
+            </button>
+            <!-- Stacked dropdown on mobile, inline row from md up -->
+            <div id="nav-menu" class="hidden absolute top-full left-0 w-full flex-col gap-4 px-6 py-4 bg-slate-900 border-b border-slate-800 text-sm font-medium md:static md:flex md:flex-row md:w-auto md:gap-6 md:p-0 md:bg-transparent md:border-0">
                 <a href="#about" class="hover:text-sky-400 transition">About</a>
                 <a href="#skills" class="hover:text-sky-400 transition">Skills</a>
                 <a href="#projects" class="hover:text-sky-400 transition">Projects</a>
@@ -39,12 +43,13 @@
             </div>
         </div>
     </nav>
-    
+
+    <main>
     <!--Hero Section-->
     <section id="about" class="min-h-screen flex items-center justify-center pt-28 pb-12 px-6">
         <div class="max-w-4xl text-center space-y-6">
             <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-sky-500/10 text-sky-400 border border-sky-500/20 inline-block">
-                Junior Software & Web Developer
+                Entry-Level Software & Web Developer
             </span>
             <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
                 Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-400">Anjo H. Olorosisimo</span>
@@ -54,17 +59,20 @@
             </p>
             
             <div class="flex flex-wrap justify-center gap-4 text-xs font-medium text-slate-400 pt-2">
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-sky-400"></i> Taguig City, Philippines</span>
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-graduation-cap text-emerald-400"></i> BSIT Graduate (2025)</span>
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-certificate text-yellow-400"></i> TESDA Java NCIII Scholar</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-sky-400" aria-hidden="true"></i> Taguig City, Philippines</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-graduation-cap text-emerald-400" aria-hidden="true"></i> BSIT Graduate (2025)</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-certificate text-yellow-400" aria-hidden="true"></i> Java Programming NC III (in training)</span>
             </div>
 
-            <div class="flex justify-center gap-4 pt-4">
+            <div class="flex flex-wrap justify-center gap-4 pt-4">
                 <a href="#projects" class="px-6 py-3 bg-sky-500 hover:bg-sky-600 font-semibold text-slate-900 rounded-lg shadow-lg shadow-sky-500/20 transition">
                     View My Projects
                 </a>
                 <a href="#contact" class="px-6 py-3 bg-slate-800 hover:bg-slate-700 font-semibold text-slate-200 border border-slate-700 rounded-lg transition">
                     Get In Touch
+                </a>
+                <a href="assets/Anjo-H-Olorosisimo-CV.pdf" download class="inline-flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 font-semibold text-slate-200 border border-slate-700 rounded-lg transition">
+                    <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Download CV <span class="text-xs font-normal text-slate-400">(PDF)</span>
                 </a>
             </div>
         </div>
@@ -145,61 +153,220 @@
     <section id="projects" class="py-20 px-6">
         <div class="max-w-6xl mx-auto">
             <h2 class="text-3xl font-bold text-center mb-4">Featured Projects</h2>
-            <p class="text-slate-400 text-center max-w-xl mx-auto mb-12 text-sm">Key web applications, IoT capstone solutions, and software systems I've engineered.</p>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                
-                <!-- Project 1: TRIPAC DB -->
-                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-sky-500/50 transition flex flex-col justify-between p-6 space-y-4">
+            <p class="text-slate-400 text-center max-w-xl mx-auto mb-12 text-sm">Web, capstone, and training projects. Each card is labeled with the context it was built in.</p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Project 1: TRIPAC-FMIS -->
+                <article class="bg-slate-800 rounded-xl border border-slate-700 hover:border-sky-500/50 transition flex flex-col justify-between p-6 gap-6">
                     <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs font-semibold text-sky-400 uppercase tracking-widest">Laravel 12 Web App</span>
-                            <a href="https://tripacdb.com" target="_blank" class="text-slate-400 hover:text-sky-400 text-sm flex items-center gap-1">
-                                tripacdb.com <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                            </a>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-100">TRIPAC Database Management System</h3>
+                        <span class="text-xs font-semibold text-sky-400 uppercase tracking-widest">Freelance Project · Laravel</span>
+                        <h3 class="text-xl font-bold text-slate-100">TRIPAC-FMIS</h3>
+                        <p class="text-sm text-slate-400">Fraternity Membership Information System</p>
                         <p class="text-slate-300 text-sm leading-relaxed">
-                            Database-driven web application featuring authentication, role-based access control, chapter/member CRUD management, and relational database migrations and seeders.
+                            A Laravel 12 web application I built as a freelance project for a fraternity, to manage its chapters and member records with role-based access.
                         </p>
+                        <ul class="text-slate-300 text-sm space-y-1.5 list-disc pl-5">
+                            <li>Super Admin and Chapter Admin roles enforced with middleware and policies</li>
+                            <li>Chapter and member CRUD with validation and soft deletes</li>
+                            <li>Member case histories and an audit log of record changes</li>
+                            <li>PDF export of a chapter's member list</li>
+                        </ul>
                     </div>
-                    <div class="space-y-4 pt-2">
-                        <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-300">
-                            <span class="bg-slate-700/60 px-2.5 py-1 rounded">Laravel 12</span>
-                            <span class="bg-slate-700/60 px-2.5 py-1 rounded">PHP</span>
-                            <span class="bg-slate-700/60 px-2.5 py-1 rounded">MySQL</span>
-                            <span class="bg-slate-700/60 px-2.5 py-1 rounded">Tailwind CSS</span>
-                        </div>
-                        <a href="https://github.com/alesana-dev" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-sky-400 hover:underline">
-                            <i class="fa-brands fa-github"></i> View Repository
+                    <div class="space-y-4">
+                        <ul class="flex flex-wrap gap-2 text-xs font-mono text-slate-300" aria-label="Technologies used">
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">Laravel 12</li>
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">PHP</li>
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">MySQL</li>
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">Tailwind CSS</li>
+                        </ul>
+                        <a href="https://github.com/alesana-dev/Database-Management-Track-and-Stack" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-sky-400 hover:underline">
+                            <i class="fa-brands fa-github" aria-hidden="true"></i> View Repository<span class="sr-only"> for TRIPAC-FMIS (opens in a new tab)</span>
                         </a>
                     </div>
-                </div>
+                </article>
 
-                <!-- Project 2: Capstone RFID & Face Recognition -->
-                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-sky-500/50 transition flex flex-col justify-between p-6 space-y-4">
+                <!-- Project 2: Capstone attendance system -->
+                <article class="bg-slate-800 rounded-xl border border-slate-700 hover:border-sky-500/50 transition flex flex-col justify-between p-6 gap-6">
                     <div class="space-y-3">
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs font-semibold text-emerald-400 uppercase tracking-widest">Capstone Project (Hardware & Web)</span>
-                            <i class="fa-solid fa-microchip text-slate-400"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-100">RFID & Face Recognition Attendance System</h3>
+                        <span class="text-xs font-semibold text-emerald-400 uppercase tracking-widest">Academic · Team Capstone</span>
+                        <h3 class="text-xl font-bold text-slate-100">Automated Attendance Monitoring System</h3>
+                        <p class="text-sm text-slate-400">RFID and face recognition attendance</p>
                         <p class="text-slate-300 text-sm leading-relaxed">
-                            Automated attendance monitoring system combining Raspberry Pi hardware, dual RFID + face recognition verification, dashboard reporting, and real-time SMS notifications.
+                            My role: programmer on a team capstone. A student taps an RFID card, then the kiosk captures two camera frames to verify the student's face before recording Time In or Time Out.
                         </p>
+                        <ul class="text-slate-300 text-sm space-y-1.5 list-disc pl-5">
+                            <li>Face match against the registered student, plus a simple blink check</li>
+                            <li>Present or Late status based on a 15-minute grace period</li>
+                            <li>SMS to the parent's number through a SIM900 GSM module</li>
+                            <li>Admin, professor, and student dashboards with CSV export</li>
+                        </ul>
                     </div>
-                    <div class="space-y-4 pt-2">
-                        <div class="flex flex-wrap gap-2 text-xs font-mono text-slate-300">
-                            <span class="bg-slate-700/60 px-2.5 py-1 rounded">Python</span>
-                            <span class="bg-slate-700/60 px-2.5 py-1 rounded">Raspberry Pi</span>
-                            <span class="bg-slate-700/60 px-2.5 py-1 rounded">Flask/Django</span>
-                            <span class="bg-slate-700/60 px-2.5 py-1 rounded">Face Recognition</span>
-                        </div>
-                        <a href="https://github.com/alesana-dev" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-sky-400 hover:underline">
-                            <i class="fa-brands fa-github"></i> View Repository
+                    <div class="space-y-4">
+                        <ul class="flex flex-wrap gap-2 text-xs font-mono text-slate-300" aria-label="Technologies used">
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">Python</li>
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">Flask</li>
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">SQLite</li>
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">face_recognition</li>
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">Raspberry Pi</li>
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">RFID</li>
+                        </ul>
+                        <a href="https://github.com/alesana-dev/automated-attendance-monitoring" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-sky-400 hover:underline">
+                            <i class="fa-brands fa-github" aria-hidden="true"></i> View Repository<span class="sr-only"> for the Automated Attendance Monitoring System (opens in a new tab)</span>
                         </a>
                     </div>
-                </div>
+                </article>
 
-                <!-- Project 3: Java Banking System -->
-                <div class="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-sky-500/50 transition
+                <!-- Project 3: Java banking training project -->
+                <article class="bg-slate-800 rounded-xl border border-slate-700 hover:border-sky-500/50 transition flex flex-col justify-between p-6 gap-6">
+                    <div class="space-y-3">
+                        <span class="text-xs font-semibold text-yellow-400 uppercase tracking-widest">Training · Course Study</span>
+                        <h3 class="text-xl font-bold text-slate-100">Java Banking System</h3>
+                        <p class="text-sm text-slate-400">TESDA Java Programming NC III</p>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            A demo banking application provided by my trainer in the Java Programming NC III course. I studied its code to learn how a Spring Boot application is structured. It is a learning project, not production banking software.
+                        </p>
+                        <ul class="text-slate-300 text-sm space-y-1.5 list-disc pl-5">
+                            <li>What I studied: a Spring Boot REST API with session-based login</li>
+                            <li>Customer and admin roles protected by Spring Security</li>
+                            <li>Deposits, transfers, and transaction history</li>
+                            <li>Service-layer unit tests</li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <ul class="flex flex-wrap gap-2 text-xs font-mono text-slate-300" aria-label="Technologies used">
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">Java 21</li>
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">Spring Boot</li>
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">Spring Data JPA</li>
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">MySQL</li>
+                            <li class="bg-slate-700/60 px-2.5 py-1 rounded">React</li>
+                        </ul>
+                        <a href="https://github.com/alesana-dev/bankingNorthStarBank" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-sky-400 hover:underline">
+                            <i class="fa-brands fa-github" aria-hidden="true"></i> View Repository<span class="sr-only"> for the Java Banking System (opens in a new tab)</span>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience, Education & Training Section -->
+    <section id="experience" class="py-20 px-6 bg-slate-950/60 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Experience</h2>
+
+            <h3 class="text-lg font-semibold text-slate-200 mb-6">Work Experience</h3>
+            <ol class="space-y-6 border-l border-slate-700 pl-6 mb-14">
+                <li>
+                    <p class="text-xs font-semibold text-sky-400 uppercase tracking-widest">2026 – Present</p>
+                    <h4 class="text-lg font-bold text-slate-100">WordPress Website Support Specialist</h4>
+                    <p class="text-sm text-slate-400 mb-2">Freelance · Subcontracted client work</p>
+                    <ul class="text-sm text-slate-300 space-y-1.5 list-disc pl-5">
+                        <li>Update and maintain client website content in WordPress.</li>
+                        <li>Manage plugin and theme updates, including compatibility checks.</li>
+                        <li>Perform website maintenance and basic troubleshooting through Cloudways.</li>
+                        <li>Handle client requests and document completed maintenance work.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="text-xs font-semibold text-sky-400 uppercase tracking-widest">Feb 2025 – May 2025</p>
+                    <h4 class="text-lg font-bold text-slate-100">IT Intern</h4>
+                    <p class="text-sm text-slate-400 mb-2">Barangay Kalawaan, Pasig City</p>
+                    <ul class="text-sm text-slate-300 space-y-1.5 list-disc pl-5">
+                        <li>Performed computer system maintenance and troubleshooting.</li>
+                        <li>Assisted with digital file management and reporting.</li>
+                    </ul>
+                </li>
+                <li>
+                    <p class="text-xs font-semibold text-sky-400 uppercase tracking-widest">2022</p>
+                    <h4 class="text-lg font-bold text-slate-100">Data Entry Specialist</h4>
+                    <p class="text-sm text-slate-400 mb-2">Unified Solution</p>
+                    <ul class="text-sm text-slate-300 space-y-1.5 list-disc pl-5">
+                        <li>Maintained and organized large datasets with a focus on accuracy and consistency.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3 class="text-lg font-semibold text-slate-200 mb-6">Education &amp; Training</h3>
+            <div class="grid sm:grid-cols-2 gap-6 mb-10">
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700/50">
+                    <p class="text-xs font-semibold text-emerald-400 uppercase tracking-widest">Graduated Aug 2025</p>
+                    <h4 class="font-bold text-slate-100 mt-1">Bachelor of Science in Information Technology</h4>
+                    <p class="text-sm text-slate-400">Pateros Technological College</p>
+                </div>
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700/50">
+                    <p class="text-xs font-semibold text-yellow-400 uppercase tracking-widest">2026 – Present</p>
+                    <h4 class="font-bold text-slate-100 mt-1">Java Programming NC III (TESDA)</h4>
+                    <p class="text-sm text-slate-400">Center for International Industries Competence Corp. (CIICC)</p>
+                    <p class="text-sm text-slate-300 mt-2">Java and OOP, Swing GUI, Spring Boot, and database integration with SQL.</p>
+                </div>
+                <div class="bg-slate-800/50 p-5 rounded-xl border border-slate-700/50 sm:col-span-2">
+                    <p class="text-xs font-semibold text-orange-400 uppercase tracking-widest">Training Badge</p>
+                    <h4 class="font-bold text-slate-100 mt-1">AWS Cloud Quest: Cloud Practitioner – Training</h4>
+                    <p class="text-sm text-slate-400">Amazon Web Services Training and Certification (via Credly)</p>
+                    <p class="text-sm text-slate-300 mt-2">Hands-on practice with Amazon EC2 and S3 during the on-the-job training of my Java Programming NC III course. This is a training badge, not the AWS Certified Cloud Practitioner exam.</p>
+                </div>
+            </div>
+
+            <p class="text-sm text-slate-400 leading-relaxed">
+                <span class="font-semibold text-slate-300">Additional background:</span>
+                17 years in forklift operation and logistics, with a strong focus on safety procedures, accuracy, and teamwork.
+            </p>
+        </div>
+    </section>
+    </main>
+
+    <!-- Contact -->
+    <footer id="contact" class="py-16 px-6 border-t border-slate-800 bg-slate-950 text-center">
+        <div class="max-w-6xl mx-auto space-y-6">
+            <h2 class="text-2xl font-bold text-slate-100">Get In Touch</h2>
+            <p class="text-slate-400 text-sm max-w-xl mx-auto">I'm open to entry-level software and web developer roles. The best way to reach me is by email.</p>
+            <ul class="flex flex-wrap justify-center gap-4 text-sm">
+                <li>
+                    <a href="mailto:hechanovaanjo@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-700 text-slate-200 hover:border-sky-500 hover:text-sky-400 transition">
+                        <i class="fa-solid fa-envelope" aria-hidden="true"></i> hechanovaanjo@gmail.com
+                    </a>
+                </li>
+                <li>
+                    <a href="assets/Anjo-H-Olorosisimo-CV.pdf" download class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-700 text-slate-200 hover:border-sky-500 hover:text-sky-400 transition">
+                        <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Download CV (PDF)
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/anjo-hechanova/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-700 text-slate-200 hover:border-sky-500 hover:text-sky-400 transition">
+                        <i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn<span class="sr-only"> (opens in a new tab)</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/alesana-dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-700 text-slate-200 hover:border-sky-500 hover:text-sky-400 transition">
+                        <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub<span class="sr-only"> (opens in a new tab)</span>
+                    </a>
+                </li>
+            </ul>
+            <p class="text-xs text-slate-500 pt-6">© 2026 Anjo H. Olorosisimo. Built with HTML &amp; Tailwind CSS.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu: show/hide the nav links and keep aria-expanded in sync for screen readers.
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        function setMenuOpen(open) {
+            navMenu.classList.toggle('hidden', !open);
+            navMenu.classList.toggle('flex', open);
+            navToggle.setAttribute('aria-expanded', String(open));
+        }
+
+        navToggle.addEventListener('click', () => {
+            setMenuOpen(navToggle.getAttribute('aria-expanded') !== 'true');
+        });
+
+        // Close the menu after choosing a section so it doesn't cover the content.
+        navMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => setMenuOpen(false));
+        });
+    </script>
+</body>
+</html>
